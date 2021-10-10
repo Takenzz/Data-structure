@@ -1,4 +1,5 @@
 hello git! 
-hello git! 
-hello git! 
+ 
 彪 赖yyds
+
+这个用来学习Git，以及用C++实现数据结构
