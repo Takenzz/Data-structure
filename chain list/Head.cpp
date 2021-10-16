@@ -27,7 +27,7 @@ chain (chain<T> &);
 ~chain () {
 while (List != NULL){
 
-ChainList *NextNode=List->next ;
+ChainList<T> *NextNode=List->next ;
 delete List ;
 List = NextNode ;
 }
@@ -41,7 +41,7 @@ void  insert(int Index,const T& data) ;//在List链表对应结点插入元素
 void  erase(int Index,ChainList* List ) ;//删除对应结点
 
 protected:
-chain<T> *List; //单链表头指针
+ChainList<T>* List; //单链表头指针
 int  ListSize;
 
 };
@@ -53,15 +53,15 @@ if(Index<1){
     cout<<"索引位置输入错误"<<endl ;
 }
 
-else{
-    chain<T> *Node=List;
+else{ 
+    ChainList<T> *Node=List;
     int i=0;
     while(i < Index-1 && Node->next==NULL)
     {
         Node=Node->next;
         i++;
     }
-    chain<T> *p=new  T(data);
+    ChainList<T> *p=new  T(data);
     p->next=Node->next;
     Node->next=p ;
     
@@ -72,7 +72,7 @@ else{
 template<class T>
 T  chain<T>::get(int Index){
      int  i=0;
-     chain<T> *Node=List;
+     ChainList<T> *Node=List;
      while(i<Index&&Node->next==NULL)
      {
          Node=Node->next;
