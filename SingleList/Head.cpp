@@ -25,7 +25,7 @@ public:
 
         List = new ChainList<T>();
         List->next = nullptr;
-        ListSize = 2;
+        ListSize = 0;
 
     }               //构造函数，将链表初始化指向NULL
 
@@ -68,33 +68,13 @@ public:
     ChainList<T> *get(int Index);//返回对应索引的前一个结点；
     void  insert(int Index, const T& data);//在List链表对应结点插入元素
     void   erase(int Index) ;//删除对应结点
-
-protected:
+    void  push_back(T data) ;//尾加
+    void  push_front(T data) ; //头加
+    void  delete_back();//尾删
     ChainList<T>* List; //单链表头指针
-    int  ListSize;
+    int  ListSize=0;
 
 };
-
-template<class T>
-void  chain<T>::insert(int Index, const T& data) {
-
-    if (Index < 1) {
-        cout << "索引位置输入错误" << endl;
-    }
-
-    else {
-        ChainList<T>* Node = List;
-        int i = 0;
-        while (i < Index - 1 && Node->next != NULL)
-        {
-            Node = Node->next;
-            i++;
-        }
-        ChainList<T>* p = new  ChainList<T>(data, Node->next);
-        Node->next = p;
-    }
-
-}
 
 template<class T>
 ChainList<T> *chain<T>::get(int Index) {
@@ -105,15 +85,20 @@ ChainList<T> *chain<T>::get(int Index) {
         Node = Node->next;
         i++;
     }
-    if (Node == NULL)
-    {
-        cout << "该结点不存在" << endl;
-    }
-    else {
-        return Node;
-    }
+     return Node;
 
 }
+template<class T>
+void  chain<T>::insert(int Index, const T& data) {
+
+        ChainList<T>* Node = get(Index);
+        ChainList<T>* p = new  ChainList<T>(data, Node->next);
+        Node->next = p;
+        ListSize++;
+
+}
+
+
 
 template<class T>
 int chain<T>::size(){
@@ -135,7 +120,33 @@ void chain<T>::erase(int Index){
     ChainList<T> *Ptr2=Ptr->next;
     Ptr->next=Ptr2->next;
     delete Ptr2 ;
+    ListSize--;
 
+}
+
+template<class T>
+void chain<T>::push_back(T data){
+
+         insert(ListSize+1, data);
+
+}
+
+template<class T>
+void chain<T>::push_front(T data){
+
+         insert(1, data);
+         ListSize++;
+
+}
+
+template<class T>
+void chain<T>::delete_back(){
+
+       ChainList<T> *Ptr=get(ListSize);
+       ChainList<T> *Ptr2=Ptr->next;
+       Ptr->next=nullptr;
+       delete Ptr2;
+      ListSize--;
 }
 
 int main()
@@ -145,8 +156,13 @@ int main()
      list.insert(1,1);
      list.insert(2,2);
      list.insert(3,3);
-     list.erase(2);
-     ChainList<int> *p=list.get(3);
-     cout << p->data << endl ;
-
+     list.push_back(4);
+     d = list.size();
+     list.delete_back();
+     b = list.size() ;
+     ChainList<int> *p=list.get(4);
+     cout << c << endl ;
+     cout << d << endl;
+     cout << p->data <<endl ;
+     cout << b << endl;
 }

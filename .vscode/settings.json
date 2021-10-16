@@ -5,6 +5,8 @@
         "type_traits": "cpp",
         "xmemory": "cpp",
         "xstddef": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "iostream": "cpp",
+        "xutility": "cpp"
     }
 }
