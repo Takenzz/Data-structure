@@ -10,8 +10,5 @@ int main()
    test.erase_front() ;
    int i = test.GetNode(1)->value ;
    std::cout << i ;
-
-
-
      return 0 ;
 }
