@@ -1,4 +1,4 @@
-# Data-structure-C-
+# Data-structure
 数据结构学习(C++实现)
 
 用C++模板实现数据结构  
