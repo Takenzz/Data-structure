@@ -10,7 +10,7 @@
 - [x] 队列(LinkQueue)
 - [x] 循环队列(LoopQueue)
 - [x] 二叉搜索树(Binary Search Tree)  ~~线索二叉树~~(BST 遍历实现)
-- [ ] 平衡二叉树(AVL)
+- [x] 平衡二叉树(AVL)
 
 
 
